@@ -1,3 +1,58 @@
-{"name":"PIXORA — Images. Reimagined.","short_name":"PIXORA","description":"Upload a photo, describe the change, and let AI transform it.","id":"/","start_url":"/?source=pwa","scope":"/","display":"standalone","orientation":"portrait","background_color":"#07070A","theme_color":"#07070A","categories":["photo","productivity"],
-"icons":[{"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"/icons/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}],
-"shortcuts":[{"name":"New transformation","url":"/?source=shortcut","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]},{"name":"My Creations","url":"/#creations","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]}]}
+{
+ "name": "PIXORA \u2014 Images. Reimagined.",
+ "short_name": "PIXORA",
+ "description": "Upload a photo, describe the change, and let AI transform it.",
+ "id": "./",
+ "start_url": "./?source=pwa",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#07070A",
+ "theme_color": "#07070A",
+ "categories": [
+  "photo",
+  "productivity"
+ ],
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "New transformation",
+   "url": "./?source=shortcut",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "My Creations",
+   "url": "./#creations",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  }
+ ]
+}
