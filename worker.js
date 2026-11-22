@@ -51,15 +51,25 @@ export default {
     if (list.length) prompt += `. Keep unchanged: ${list.join(", ")}. Change only what was requested.`;
 
     let bin = ""; for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-    const api = (env.HF_API_URL || "https://router.huggingface.co/hf-inference/models/{model}").replace("{model}", env.HF_MODEL_ID);
+    const fal = env.HF_PROVIDER === "fal-ai";
+    const api = fal ? `https://router.huggingface.co/fal-ai/${env.HF_PROVIDER_MODEL || "fal-ai/qwen-image-edit"}`
+      : (env.HF_API_URL || "https://router.huggingface.co/hf-inference/models/{model}").replace("{model}", env.HF_MODEL_ID);
+    const payload = fal ? { image_url: `data:${MAGIC(bytes)};base64,${btoa(bin)}`, prompt } : { inputs: btoa(bin), parameters: { prompt } };
     const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), parseInt(env.TIMEOUT_MS) || 100000);
     try {
       const r = await fetch(api, { method: "POST", signal: ctl.signal,
         headers: { Authorization: `Bearer ${env.HF_API_TOKEN}`, "Content-Type": "application/json", Accept: "image/*" },
-        body: JSON.stringify({ inputs: btoa(bin), parameters: { prompt } }) });
+        body: JSON.stringify(payload) });
       const type = r.headers.get("content-type") || "";
       if (r.ok && type.startsWith("image/"))
         return new Response(r.body, { headers: { ...cors, "Content-Type": type, "X-Pixora-Model": env.HF_MODEL_ID, "Cache-Control": "no-store" } });
+      if (fal && r.ok && type.includes("json")) { // provider returns JSON with a URL to the edited image
+        const j = await r.json().catch(() => ({})), u = j?.images?.[0]?.url || j?.image?.url;
+        if (!u) return fail(502, "invalid_response", "The provider replied without an image URL.");
+        const ir = await fetch(u, { signal: ctl.signal }), it = ir.headers.get("content-type") || "";
+        if (!ir.ok || !it.startsWith("image/")) return fail(502, "invalid_response", "The edited image could not be downloaded.");
+        return new Response(ir.body, { headers: { ...cors, "Content-Type": it, "X-Pixora-Model": env.HF_MODEL_ID, "Cache-Control": "no-store" } });
+      }
       let d = ""; try { const t = await r.text(); try { d = JSON.parse(t).error || t } catch { d = t } d = String(d).slice(0, 300); } catch {}
       if (r.ok) return fail(502, "invalid_response", "The model replied but did not return an image.");
       if (r.status === 401 || r.status === 403) return fail(502, "hf_auth", "Hugging Face rejected the server token.");
