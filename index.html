@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07070A"><meta name="color-scheme" content="dark"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PIXORA"><meta name="description" content="PIXORA: upload a photo, describe the change, and AI transforms it.">
+<meta name="theme-color" content="#040C0C"><meta name="color-scheme" content="dark"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PIXORA"><meta name="description" content="PIXORA: upload a photo, describe the change, and AI transforms it.">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <title>PIXORA — Images. Reimagined.</title>
 <script src="config.js"></script><style>
@@ -60,33 +60,75 @@ nav button{display:flex;align-items:center;gap:8px}
 }
 @media(min-width:701px){#camrow{display:none}}
 @media (display-mode:standalone){footer{font-size:12px}}
+
+:root{--bg:#040C0C;--bg2:#081412;--sf:#0A1717;--bd:#00D4AA2b;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+body{background:radial-gradient(900px 520px at 0% 0%,#00d4aa24,transparent 62%),radial-gradient(760px 620px at 100% 35%,#00d4aa1a,transparent 62%),#040C0C;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cg stroke='%2300d4aa' stroke-linecap='round' stroke-opacity='.5' stroke-width='1.3'%3E%3Cpath d='M30 60l14 6M120 190l10 4M60 330l16 6M200 450l12 5M300 90l9 3M420 260l13 5M470 420l10 4M360 480l12 5'/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:linear-gradient(90deg,#000,transparent 24%,transparent 76%,#000);mask-image:linear-gradient(90deg,#000,transparent 24%,transparent 76%,#000);opacity:.6}
+header{background:#040c0ccc;backdrop-filter:blur(10px);border-bottom:1px solid #00d4aa1f;padding-left:max(24px,calc((100vw - 1240px)/2));padding-right:max(24px,calc((100vw - 1240px)/2));gap:24px}
+.brand{display:flex;align-items:center;gap:14px}.word{font-weight:700;font-size:26px;letter-spacing:.36em;line-height:1}.tag{font:11px var(--mono);letter-spacing:.3em;color:var(--tx2);margin-top:6px}
+nav{margin:0 auto}
+.pill{display:flex;align-items:center;gap:10px;border:1px solid var(--bd);border-radius:999px;padding:10px 18px;font:11px var(--mono);letter-spacing:.22em;color:#9fe9d6;background:#00d4aa0d}
+.pill i{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}.pill.off i{background:var(--err);box-shadow:none}
+main{max-width:1240px}
+.studio{display:grid;grid-template-columns:minmax(320px,440px) 1fr;gap:28px;align-items:start}
+.pane{border:1px solid var(--bd);border-radius:28px;background:linear-gradient(180deg,#0b1a1a99,#06100f99);padding:26px;box-shadow:inset 0 1px 0 #00d4aa14}
+.pane h1{font-size:15px;font-weight:600;letter-spacing:.32em}.pane .sub{font:12px var(--mono);letter-spacing:.14em;margin:6px 0 0}
+.sec{display:flex;align-items:center;gap:12px;font:600 11px/1 var(--mono);letter-spacing:.28em;color:var(--gold);margin:26px 0 12px}
+.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#00d4aa44,transparent)}
+.mono{font:11px var(--mono);letter-spacing:.2em;color:#9fe9d6;display:block}.dim{color:var(--tx2)}
+.drop{min-height:220px;border:1px dashed #00d4aa40;border-radius:18px;background:#00d4aa08}.drop img{max-height:280px;border-radius:10px}
+textarea{background:#0a1515;border:1px solid #00d4aa26;border-radius:16px;margin-top:8px;min-height:110px}
+.chip{font:12px var(--mono);letter-spacing:.04em;border-color:#00d4aa2e;background:#00d4aa0a;color:#9fe9d6;border-radius:999px}
+.btn{font-family:var(--mono);font-size:14px;letter-spacing:.32em;border-radius:22px;min-height:58px;background:linear-gradient(100deg,#00d4aa,#2de6bd 55%,#c9fff1)}
+.btn.alt{font-family:var(--mono);font-size:11px;letter-spacing:.16em;border-radius:14px;min-height:44px;background:#00d4aa0a;border:1px solid #00d4aa38;color:#9fe9d6;text-decoration:none;display:inline-flex;align-items:center}
+.note{font-size:12px;color:var(--tx2);border:1px solid #00d4aa1f;border-radius:14px;padding:12px 14px;margin:18px 0 0}
+.ct{font-size:24px;font-weight:300;letter-spacing:.14em;margin-bottom:4px}
+.frame{position:relative;min-height:440px;margin-top:18px;border:1px solid #00d4aa22;border-radius:20px;background:#050d0d;display:grid;place-items:center;padding:20px}
+.frame::before,.frame::after{content:"";position:absolute;width:22px;height:22px;border:1px solid #00d4aa66}
+.frame::before{top:10px;left:10px;border-right:0;border-bottom:0}.frame::after{bottom:10px;right:10px;border-left:0;border-top:0}
+.mid{text-align:center}#result{width:100%}.cmp{border-radius:14px}
+.frame:has(#busy:not(.hide)) #empty,.frame:has(#fail:not(.hide)) #empty{display:none}
+#rbtns{margin-top:12px}.panel{background:#0a1717;border-color:var(--bd)}
+h2{font:600 11px var(--mono);letter-spacing:.28em;color:var(--gold)}
+section:not(#studio){max-width:900px;margin:0 auto}
+@media(max-width:900px){.studio{grid-template-columns:1fr}.tag{display:none}.frame{min-height:300px}}
+@media(max-width:700px){.word{font-size:20px}.pill{padding:8px 12px;letter-spacing:.12em;font-size:10px;margin-left:auto}#install{display:none}#nav{background:#061010ee}.pane{padding:18px;border-radius:22px}.brand svg{width:36px;height:36px}}
 </style></head><body>
-<header><div class="logo">PIX<b>O</b>RA</div><button class="btn alt hide" id="install" style="margin-left:auto">Install app</button>
-<nav id="nav" aria-label="Main"><button data-v="studio"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="M21 16l-5-5-9 10"/></svg><span>Studio</span></button><button data-v="creations"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>My Creations</span></button><button data-v="how"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 115 .3c0 1.7-2.5 2-2.5 3.7M12 17h.01"/></svg><span>How It Works</span></button><button data-v="account"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Account</span></button><button data-v="settings"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 00-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 00-2-1.2L14.3 3h-4l-.4 2.6a7 7 0 00-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 005 12a7 7 0 00.1 1.2l-2 1.5 2 3.4 2.3-.9a7 7 0 002 1.2l.4 2.6h4l.4-2.6a7 7 0 002-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/></svg><span>Settings</span></button></nav></header>
+<header><div class="brand"><svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><polygon points="23,2 42,12.5 42,33.5 23,44 4,33.5 4,12.5" fill="none" stroke="#00D4AA" stroke-width="1.6"/><polygon points="23,8 37,15.5 37,30.5 23,38 9,30.5 9,15.5" fill="none" stroke="#00D4AA" stroke-opacity=".35"/><text x="23" y="28.5" text-anchor="middle" font-size="15" font-weight="700" fill="#00D4AA" font-family="system-ui,sans-serif">Px</text></svg><div><div class="word">PIXORA</div><div class="tag">IMAGE TRANSFORMATION ENGINE</div></div></div>
+<nav id="nav" aria-label="Main"><button data-v="studio"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="M21 16l-5-5-9 10"/></svg><span>Studio</span></button><button data-v="creations"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>My Creations</span></button><button data-v="how"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 115 .3c0 1.7-2.5 2-2.5 3.7M12 17h.01"/></svg><span>How It Works</span></button><button data-v="account"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Account</span></button><button data-v="settings"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 00-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 00-2-1.2L14.3 3h-4l-.4 2.6a7 7 0 00-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 005 12a7 7 0 00.1 1.2l-2 1.5 2 3.4 2.3-.9a7 7 0 002 1.2l.4 2.6h4l.4-2.6a7 7 0 002-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/></svg><span>Settings</span></button></nav><button class="btn alt hide" id="install">Install app</button><div class="pill" id="pill"><i></i><span>CHECKING</span></div></header>
 <main>
 <section id="studio">
-<h1>PIXORA STUDIO</h1><p class="sub">Your image. Your command.</p>
 <div id="cfgwarn" class="panel err hide"></div>
-<div id="work">
-<div class="grid"><div>
+<div class="studio" id="work">
+<div class="pane">
+<h1>PIXORA STUDIO</h1><p class="sub">Your image. Your command.</p>
+<div class="sec">01 / SOURCE</div>
 <div class="drop" id="drop" tabindex="0" role="button" aria-label="Upload an image"><div id="dropmsg"><p><strong>Drop a photograph here</strong></p><p class="sub">or tap to choose · JPG, JPEG, PNG, WEBP</p></div><img id="prev" class="hide" alt="Uploaded image preview"></div>
 <input id="cam" type="file" accept="image/*" capture="environment" class="hide"><input id="file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" class="hide">
-<div class="row" id="camrow"><button class="btn alt" id="camBtn" type="button">Take a photo</button></div><div class="meta hide" id="meta"><span id="info"></span><button class="btn alt" id="replace">Replace</button><button class="btn alt" id="remove">Remove</button></div>
-<div id="uerr" class="ok err hide" style="margin-top:8px"></div></div>
-<div><h2>WHAT SHOULD CHANGE?</h2>
+<div class="row" id="camrow"><button class="btn alt" id="camBtn" type="button">Take a photo</button></div>
+<div class="meta hide" id="meta"><span id="info"></span><button class="btn alt" id="replace">Replace</button><button class="btn alt" id="remove">Remove</button></div>
+<div id="uerr" class="ok err hide" style="margin-top:8px"></div>
+<div class="sec">02 / INSTRUCTION</div>
+<label class="mono" for="prompt">WHAT SHOULD CHANGE?</label>
 <textarea id="prompt" maxlength="1000" placeholder="Describe exactly how you want your image transformed..."></textarea>
 <div class="chips" id="chips"></div>
-<h2>KEEP UNCHANGED</h2>
+<div class="sec">03 / KEEP UNCHANGED</div>
 <div class="opts" id="opts"></div>
-<button class="btn" id="go">TRANSFORM IMAGE</button></div></div>
-<div id="busy" class="panel hide" role="status" aria-live="polite"><div class="spin"></div><strong>PIXORA IS WORKING</strong><p class="sub" style="margin:0">Reconstructing your visual instruction...</p></div>
-<div id="fail" class="panel err hide" role="alert"><p id="failmsg"></p><button class="btn alt" id="retry">Retry</button></div>
+<button class="btn" id="go">✦ TRANSFORM IMAGE</button>
+<p class="note">Your photo is sent through the PIXORA server to Hugging Face for processing. PIXORA does not store it. Creations stay in this browser.</p>
 </div>
+<div class="pane">
+<div class="ct">The Image Chamber</div><div class="mono dim">OUTPUT / 01</div>
+<div class="frame" id="frame">
+<div id="empty" class="mono dim mid">Your transformed image appears here.</div>
+<div id="busy" class="hide mid" role="status" aria-live="polite"><div class="spin" style="margin:0 auto 10px"></div><strong>PIXORA IS WORKING</strong><p class="sub" style="margin:4px 0 0">Reconstructing your visual instruction...</p></div>
+<div id="fail" class="hide mid err" role="alert"><p id="failmsg"></p><button class="btn alt" id="retry">Retry</button></div>
 <div id="result" class="hide">
-<h2>BEFORE AND AFTER</h2>
 <div class="cmp" id="cmp"><img id="rOrig" alt="Original"><div class="top"><img id="rNew" alt="Transformed"></div><div class="bar"></div><span class="lbl" style="left:8px">Transformed</span><span class="lbl" style="right:8px">Original</span><input type="range" min="0" max="100" value="50" id="range" aria-label="Comparison slider"></div>
-<div class="row"><button class="btn alt" id="full">Full-size preview</button><a class="btn alt" id="dl" download>Download image</a><button class="btn alt" id="again">Transform again</button><button class="btn alt" id="newp">Start new project</button></div>
-<div class="meta" id="rmeta"></div>
+</div></div>
+<div class="mono dim" id="rmeta" style="margin-top:14px"></div>
+<div class="row" id="rbtns"><button class="btn alt" id="full">Full-size preview</button><a class="btn alt" id="dl" download>Download image</a><button class="btn alt" id="again">Transform again</button><button class="btn alt" id="newp">Start new project</button></div>
+</div>
 </div></section>
 
 <section id="creations" class="hide"><h1>MY CREATIONS</h1><p class="sub">Stored only in this browser. Nothing is kept on the PIXORA server.</p><div class="cards" id="cards"></div><p id="empty" class="sub">No creations yet. Transform an image in the Studio.</p></section>
@@ -118,8 +160,9 @@ $("#opts").innerHTML=PRES.map(([k,t])=>`<label><input type="checkbox" value="${k
 // navigation
 function view(v){["studio","creations","how","account","settings"].forEach(x=>$("#"+x).classList.toggle("hide",x!==v));document.querySelectorAll("#nav button").forEach(b=>b.setAttribute("aria-current",b.dataset.v===v));if(v==="creations")renderCreations()}
 $("#nav").onclick=e=>{const b=e.target.closest("button");if(b){view(b.dataset.v);scrollTo(0,0)}};view(location.hash==="#creations"?"creations":"studio");
+function setPill(ok){const p=$("#pill");p.classList.toggle("off",!ok);p.querySelector("span").textContent=ok?"ENGINE ONLINE":"ENGINE OFFLINE"}
 // config
-fetch(API+"/api/config").then(r=>r.json()).then(c=>{cfg=c;$("#srv").textContent=c.configured?`Model: ${c.model}. Max upload ${c.maxUploadMB} MB.`:"Not configured.";if(!c.configured){const w=$("#cfgwarn");w.textContent="This server has no Hugging Face token or model configured. Set HF_API_TOKEN and HF_MODEL_ID in .env.";w.classList.remove("hide")}}).catch(()=>{$("#cfgwarn").textContent="Cannot reach the PIXORA server.";$("#cfgwarn").classList.remove("hide")});
+fetch(API+"/api/config").then(r=>r.json()).then(c=>{cfg=c;setPill(c.configured);$("#srv").textContent=c.configured?`Model: ${c.model}. Max upload ${c.maxUploadMB} MB.`:"Not configured.";if(!c.configured){const w=$("#cfgwarn");w.textContent="This server has no Hugging Face token or model configured. Set HF_API_TOKEN and HF_MODEL_ID in .env.";w.classList.remove("hide")}}).catch(()=>{setPill(false);$("#cfgwarn").textContent="Cannot reach the PIXORA server.";$("#cfgwarn").classList.remove("hide")});
 // upload
 const kb=n=>n>1048576?(n/1048576).toFixed(2)+" MB":Math.round(n/1024)+" KB";
 function uerr(m){const e=$("#uerr");e.textContent=m||"";e.classList.toggle("hide",!m)}
@@ -144,7 +187,7 @@ async function run(){
  const prompt=$("#prompt").value.trim();if(!prompt)return showFail("Missing instruction. Describe what should change.");
  const fd=new FormData();fd.append("image",orig);fd.append("prompt",prompt);
  fd.append("preserve",JSON.stringify([...document.querySelectorAll("#opts input:checked")].map(i=>i.value)));
- busy=true;$("#go").disabled=true;$("#busy").classList.remove("hide");
+ busy=true;$("#go").disabled=true;$("#busy").classList.remove("hide");$("#frame").scrollIntoView({block:"nearest"});
  const ctl=new AbortController();lastCtl=ctl;const h={};if(LS.pixKey)h["x-pixora-key"]=LS.pixKey;
  try{
   const r=await fetch(API+"/api/transform",{method:"POST",body:fd,headers:h,signal:ctl.signal});
@@ -159,15 +202,15 @@ function showResult(model){
  if(resUrl)URL.revokeObjectURL(resUrl);resUrl=URL.createObjectURL(resBlob);
  $("#rOrig").src=origUrl;$("#rNew").src=resUrl;$("#range").value=50;setClip(50);
  const ext=(resBlob.type.split("/")[1]||"png").replace("jpeg","jpg");$("#dl").href=resUrl;$("#dl").download=`pixora-${Date.now()}.${ext}`;
- $("#rmeta").textContent=`${resBlob.type} · ${kb(resBlob.size)} · model ${model}`;
- $("#work").classList.add("hide");$("#result").classList.remove("hide")}
+ $("#rmeta").textContent=`Image ready · ${kb(resBlob.size)} · ${resBlob.type} · ${model}`;
+ $("#empty").classList.add("hide");$("#result").classList.remove("hide");$("#frame").scrollIntoView({behavior:"smooth",block:"nearest"})}
 function setClip(v){$(".cmp .top").style.clipPath=`inset(0 ${100-v}% 0 0)`;$(".cmp .bar").style.left=v+"%"}
 $("#range").oninput=e=>setClip(e.target.value);
 $("#full").onclick=()=>{$("#dlgimg").src=resUrl;$("#dlg").showModal()};$("#dlgx").onclick=()=>$("#dlg").close();
 $("#again").onclick=async()=>{// use result as the new input
  const f=new File([resBlob],`pixora-result.${(resBlob.type.split("/")[1]||"png").replace("jpeg","jpg")}`,{type:resBlob.type});
- $("#result").classList.add("hide");$("#work").classList.remove("hide");setImage(f)};
-$("#newp").onclick=()=>{clearImage();$("#prompt").value="";document.querySelectorAll("#opts input").forEach(i=>i.checked=false);$("#result").classList.add("hide");$("#work").classList.remove("hide")};
+ $("#result").classList.add("hide");$("#empty").classList.remove("hide");setImage(f)};
+$("#newp").onclick=()=>{clearImage();$("#prompt").value="";document.querySelectorAll("#opts input").forEach(i=>i.checked=false);$("#result").classList.add("hide");$("#empty").classList.remove("hide")};
 // history (IndexedDB, browser only)
 const db=new Promise((res,rej)=>{const q=indexedDB.open("pixora",1);q.onupgradeneeded=()=>q.result.createObjectStore("c",{keyPath:"id"});q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)});
 const tx=async(m,f)=>{const d=await db;return new Promise((res,rej)=>{const t=d.transaction("c",m),s=t.objectStore("c"),q=f(s);t.oncomplete=()=>res(q&&q.result);t.onerror=()=>rej(t.error)})};
@@ -180,7 +223,7 @@ async function renderCreations(){let all=[];try{all=await tx("readonly",s=>s.get
   d.querySelector("img").src=u;d.querySelector("p").textContent=c.prompt;d.querySelector(".m").textContent=c.model;
   const a=d.querySelector("a");a.href=u;a.download=`pixora-${c.id}.${(c.result.type.split("/")[1]||"png").replace("jpeg","jpg")}`;
   d.querySelector("img").onclick=()=>{$("#dlgimg").src=u;$("#dlg").showModal()};
-  d.querySelector(".u").onclick=()=>{view("studio");$("#result").classList.add("hide");$("#work").classList.remove("hide");setImage(new File([c.result],"pixora-previous.png",{type:c.result.type}))};
+  d.querySelector(".u").onclick=()=>{view("studio");$("#result").classList.add("hide");$("#empty").classList.remove("hide");setImage(new File([c.result],"pixora-previous.png",{type:c.result.type}))};
   d.querySelector(".x").onclick=async()=>{await tx("readwrite",s=>s.delete(c.id));renderCreations()};
   $("#cards").append(d)}}
 $("#wipe").onclick=async()=>{if(confirm("Delete all creations stored in this browser?")){await tx("readwrite",s=>s.clear());alert("Deleted.")}};
