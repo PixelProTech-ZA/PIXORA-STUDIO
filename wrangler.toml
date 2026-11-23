@@ -3,8 +3,9 @@ main = "worker.js"
 compatibility_date = "2025-01-01"
 
 [vars]
-HF_MODEL_ID = "PUT_YOUR_IMAGE_EDITING_MODEL_ID_HERE"
+MAGIC_HOUR_MODEL = "default"          # Magic Hour picks the best model. Other options: nano-banana, qwen-edit, seedream-v4, flux-2-klein ...
 ALLOWED_ORIGIN = "https://pixelprotech-za.github.io"   # origin only, no path. Comma-separate to add http://localhost:8080
 MAX_UPLOAD_MB = "8"
 RATE_LIMIT_PER_MIN = "6"
-# Secrets (set with wrangler, never in this file): HF_API_TOKEN, optional PIXORA_ACCESS_KEY
+TIMEOUT_MS = "100000"
+# Secrets (set with wrangler, never in this file): MAGIC_HOUR_API_KEY, optional PIXORA_ACCESS_KEY

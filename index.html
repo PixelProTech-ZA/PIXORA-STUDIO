@@ -115,7 +115,7 @@ section:not(#studio){max-width:900px;margin:0 auto}
 <div class="sec">03 / KEEP UNCHANGED</div>
 <div class="opts" id="opts"></div>
 <button class="btn" id="go">✦ TRANSFORM IMAGE</button>
-<p class="note">Your photo is sent through the PIXORA server to Hugging Face for processing. PIXORA does not store it. Creations stay in this browser.</p>
+<p class="note">Your photo is sent through the PIXORA server to Magic Hour for processing. PIXORA does not store it. Creations stay in this browser.</p>
 </div>
 <div class="pane">
 <div class="ct">The Image Chamber</div><div class="mono dim">OUTPUT / 01</div>
@@ -138,7 +138,7 @@ section:not(#studio){max-width:900px;margin:0 auto}
 <p>PIXORA edits your photograph; it does not generate an unrelated picture. Results depend on the editing model the server is configured with, and preservation settings are requests to that model, not guarantees.</p></section>
 
 <section id="account" class="hide"><h1>ACCOUNT</h1><p class="sub">Privacy</p><div class="panel"><p>PIXORA has no sign-in. Your creations live in this browser only and disappear if you clear site data.</p>
-<p>When you press TRANSFORM IMAGE, your photograph and instruction are sent through the PIXORA server to Hugging Face for processing. The PIXORA server does not save or log image contents. Hugging Face and the model provider apply their own data policies.</p>
+<p>When you press TRANSFORM IMAGE, your photograph and instruction are sent through the PIXORA server to Magic Hour for processing. The PIXORA server does not save or log image contents. Magic Hour and its model providers apply their own data policies, and Magic Hour may keep your image and the result in its own storage under those policies.</p>
 <p>The PIXORA server does not delete anything automatically because it stores nothing.</p><p>Operator: PixelProTech Solutions (Pty) Ltd, Reg 2026/622131/07, Gauteng, South Africa. Contact: pixelprotechsolutions@proton.me · 065 197 1461.</p><button class="btn alt" id="wipe">Delete all my creations</button></div></section>
 
 <section id="settings" class="hide"><h1>SETTINGS</h1><p class="sub">Saved in this browser.</p><div class="panel">
@@ -162,7 +162,7 @@ function view(v){["studio","creations","how","account","settings"].forEach(x=>$(
 $("#nav").onclick=e=>{const b=e.target.closest("button");if(b){view(b.dataset.v);scrollTo(0,0)}};view(location.hash==="#creations"?"creations":"studio");
 function setPill(ok){const p=$("#pill");p.classList.toggle("off",!ok);p.querySelector("span").textContent=ok?"ENGINE ONLINE":"ENGINE OFFLINE"}
 // config
-fetch(API+"/api/config").then(r=>r.json()).then(c=>{cfg=c;setPill(c.configured);$("#srv").textContent=c.configured?`Model: ${c.model}. Max upload ${c.maxUploadMB} MB.`:"Not configured.";if(!c.configured){const w=$("#cfgwarn");w.textContent="This server has no Hugging Face token or model configured. Set HF_API_TOKEN and HF_MODEL_ID in .env.";w.classList.remove("hide")}}).catch(()=>{setPill(false);$("#cfgwarn").textContent="Cannot reach the PIXORA server.";$("#cfgwarn").classList.remove("hide")});
+fetch(API+"/api/config").then(r=>r.json()).then(c=>{cfg=c;setPill(c.configured);$("#srv").textContent=c.configured?`Model: ${c.model}. Max upload ${c.maxUploadMB} MB.`:"Not configured.";if(!c.configured){const w=$("#cfgwarn");w.textContent="This server has no Magic Hour API key configured. Set the MAGIC_HOUR_API_KEY secret on the worker.";w.classList.remove("hide")}}).catch(()=>{setPill(false);$("#cfgwarn").textContent="Cannot reach the PIXORA server.";$("#cfgwarn").classList.remove("hide")});
 // upload
 const kb=n=>n>1048576?(n/1048576).toFixed(2)+" MB":Math.round(n/1024)+" KB";
 function uerr(m){const e=$("#uerr");e.textContent=m||"";e.classList.toggle("hide",!m)}
