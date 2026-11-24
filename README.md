@@ -12,7 +12,8 @@ PixelProTech Solutions (Pty) Ltd. Upload a photo, describe the change, and AI ed
 2. `npx wrangler deploy`
 3. `npx wrangler secret put MAGIC_HOUR_API_KEY`
 4. Optional, stops strangers using your credits: `npx wrangler secret put PIXORA_ACCESS_KEY`. Users enter it in Settings → Access Key.
-5. Put the Worker address in `config.js`, commit, push.
+5. Built-in app key (so installed apps need no typing): `npx wrangler secret put PIXORA_APP_KEY` and use the same value for `window.PIXORA_APP_KEY` in `config.js`. It is public, so keep `RATE_LIMIT_PER_MIN` low and rotate it if abused. Your private `PIXORA_ACCESS_KEY` still works for you and is never put in the repo.
+6. Put the Worker address in `config.js`, commit, push.
 
 Check it: open `<worker address>/api/config`. You should see `"configured":true`.
 

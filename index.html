@@ -188,7 +188,7 @@ async function run(){
  const fd=new FormData();fd.append("image",orig);fd.append("prompt",prompt);
  fd.append("preserve",JSON.stringify([...document.querySelectorAll("#opts input:checked")].map(i=>i.value)));
  busy=true;$("#go").disabled=true;$("#busy").classList.remove("hide");$("#frame").scrollIntoView({block:"nearest"});
- const ctl=new AbortController();lastCtl=ctl;const h={};if(LS.pixKey)h["x-pixora-key"]=LS.pixKey;
+ const ctl=new AbortController();lastCtl=ctl;const h={};const k=(LS.pixKey||"").trim()||window.PIXORA_APP_KEY||"";if(k)h["x-pixora-key"]=k;
  try{
   const r=await fetch(API+"/api/transform",{method:"POST",body:fd,headers:h,signal:ctl.signal});
   if(!r.ok){let m="Transformation failed.";try{m=(await r.json()).message||m}catch{}throw new Error(m)}

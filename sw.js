@@ -1,6 +1,6 @@
 // PIXORA service worker. Caches the app shell only. Photos and /api calls are never cached.
 // Bump V whenever any shipped file changes so installed apps refresh.
-const V = "pixora-v1";
+const V = "pixora-v2";
 const SHELL = [
   "./", "index.html", "config.js", "manifest.webmanifest",
   "icon-192.png", "icon-512.png", "maskable-512.png", "apple-touch-icon.png",

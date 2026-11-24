@@ -30,10 +30,12 @@ export default {
     if (origin && !allowed.includes(origin)) return fail(403, "forbidden_origin", "This site is not allowed to use the PIXORA API.");
 
     if (url.pathname === "/api/config")
-      return json({ maxUploadMB: maxMB, model, configured: !!env.MAGIC_HOUR_API_KEY, requiresKey: !!env.PIXORA_ACCESS_KEY });
+      return json({ maxUploadMB: maxMB, model, configured: !!env.MAGIC_HOUR_API_KEY, requiresKey: !!(env.PIXORA_ACCESS_KEY || env.PIXORA_APP_KEY) });
     if (url.pathname !== "/api/transform" || req.method !== "POST") return fail(404, "not_found", "Not found.");
 
-    if (env.PIXORA_ACCESS_KEY && req.headers.get("x-pixora-key") !== env.PIXORA_ACCESS_KEY) return fail(401, "unauthorized", "Access key missing or incorrect. Add it in Settings.");
+    // Two valid keys: the private owner key (PIXORA_ACCESS_KEY) and the public built-in app key (PIXORA_APP_KEY).
+    const validKeys = [env.PIXORA_ACCESS_KEY, env.PIXORA_APP_KEY].filter(Boolean);
+    if (validKeys.length && !validKeys.includes(req.headers.get("x-pixora-key"))) return fail(401, "unauthorized", "Access key missing or incorrect. Add it in Settings.");
     const ip = req.headers.get("CF-Connecting-IP") || "x", now = Date.now();
     const recent = (hits.get(ip) || []).filter((t) => now - t < 60000);
     if (recent.length >= (parseInt(env.RATE_LIMIT_PER_MIN) || 6)) return fail(429, "rate_limited", "Too many requests. Wait a minute and try again.");
