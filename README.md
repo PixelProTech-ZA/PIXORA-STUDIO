@@ -1,18 +1,31 @@
-# PIXORA — Images. Reimagined.
-1. `npm install`
-2. `cp .env.example .env` and set `HF_API_TOKEN` and `HF_MODEL_ID` (an image-editing model/provider that accepts an image plus an instruction and returns an image).
-3. `npm start`, open http://localhost:3000
+# PIXORA: Images. Reimagined.
 
-Notes
-- The token stays on the server. The browser only talks to `/api/transform`.
-- The server keeps no images and logs no image data. Creations are stored in the user's own browser (IndexedDB); originals only if the user opts in.
-- Hosted inference APIs differ in request format. If your model expects another shape, edit `models.js` (the adapter) or `HF_API_URL`.
-- Deploy behind HTTPS and set `PIXORA_ACCESS_KEY` to stop strangers using your quota.
+PixelProTech Solutions (Pty) Ltd. Upload a photo, describe the change, and AI edits it.
 
-Brand colours (from the PixelProTech corporate profile): background #07070A, surfaces #1A1A22, teal #00D4AA (primary accent), violet #7B2FFF (secondary), text #F1EEFA / #9A90B8. Edit the `:root` variables in `public/index.html` to change them.
+## How it works
+- **Website:** static files on GitHub Pages (this folder, flat, no subfolders).
+- **API:** a Cloudflare Worker (`worker.js`, `wrangler.toml`) holds the Magic Hour API key and calls Magic Hour. The key never reaches the browser.
+- `config.js` tells the website where the Worker lives (`window.PIXORA_API`).
+
+## Deploy the Worker
+1. `npx wrangler login`
+2. `npx wrangler deploy`
+3. `npx wrangler secret put MAGIC_HOUR_API_KEY`
+4. Optional, stops strangers using your credits: `npx wrangler secret put PIXORA_ACCESS_KEY`. Users enter it in Settings → Access Key.
+5. Put the Worker address in `config.js`, commit, push.
+
+Check it: open `<worker address>/api/config`. You should see `"configured":true`.
+
+## Settings (`wrangler.toml`)
+`ALLOWED_ORIGIN` (the website origin, comma-separate to add localhost), `MAGIC_HOUR_MODEL`, `MAX_UPLOAD_MB`, `RATE_LIMIT_PER_MIN`, `TIMEOUT_MS`.
+
+## Privacy
+Photos are sent through the Worker to Magic Hour for processing. The Worker stores nothing. Creations are kept only in the user's browser.
 
 ## PWA
-- Installable on Android (Chrome: menu → Install app, or the in-app Install button). Needs HTTPS in production (localhost works for testing).
-- Caches only the app shell. Photos and `/api` calls are never cached; transforming needs a connection.
-- Mobile layout: bottom navigation, sticky TRANSFORM IMAGE button, Take a photo (camera), safe-area support.
-- Bump `V` in `public/sw.js` when you ship UI changes so installed apps refresh.
+Installable on Android and iOS. Only the app shell is cached; photos and API calls never are. Bump `V` in `sw.js` whenever you change any file.
+
+## Flat folder rule
+Every file sits side by side. No subfolders.
+
+Brand colours: background #040C0C, teal #00D4AA, violet #7B2FFF. Edit the `:root` variables in `index.html`.
